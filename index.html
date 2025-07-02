@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>~*~ petracore is in ~*~</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <style>
+        /* Custom MySpace Emo 2000s Styling */
+        body {
+            background: #1a1a1a url('https://placehold.co/100x100/333333/1a1a1a?text=X') repeat; /* Dark grunge background */
+            font-family: 'Inter', sans-serif;
+            color: #e0e0e0;
+            text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff; /* Neon glow */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            /* Animated background */
+            animation: backgroundPan 30s linear infinite; /* Slow, continuous pan */
+        }
+
+        @keyframes backgroundPan {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; } /* Pans diagonally */
+        }
+
+        .container {
+            background-color: #2a2a2a;
+            border: 3px dashed #00ffff; /* Electric blue dashed border */
+            border-radius: 15px;
+            box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff; /* Pink glow */
+            padding: 25px;
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative stars */
+        .container::before, .container::after {
+            content: '✨'; /* Star emoji */
+            position: absolute;
+            font-size: 3em;
+            opacity: 0.7;
+            text-shadow: none;
+            animation: twinkle 1.5s infinite alternate;
+        }
+
+        .container::before {
+            top: -15px;
+            left: -15px;
+            transform: rotate(-20deg);
+        }
+
+        .container::after {
+            bottom: -15px;
+            right: -15px;
+            transform: rotate(30deg);
+        }
+
+        @keyframes twinkle {
+            from { transform: scale(1); opacity: 0.7; }
+            to { transform: scale(1.2); opacity: 1; }
+        }
+
+        h1, h2 {
+            font-family: 'Press Start 2P', cursive;
+            color: #00ffff; /* Electric blue for headings */
+            text-align: center;
+            margin-bottom: 15px;
+            text-shadow: 0 0 8px #ff00ff, 0 0 15px #ff00ff;
+        }
+
+        .section-title {
+            font-family: 'Press Start 2P', cursive;
+            color: #ff00ff; /* Hot pink for section titles */
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+            border-bottom: 2px solid #ff00ff;
+            padding-bottom: 5px;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            padding-top: 75%; /* 4:3 Aspect Ratio */
+            background-color: #000;
+            border: 2px solid #ff00ff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px #00ffff;
+        }
+
+        .slideshow-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensure the whole image is visible */
+            display: none;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .slideshow-image.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .artist-info, .qr-codes, .call-to-action {
+            background-color: #3a3a3a;
+            border: 2px solid #ff00ff;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 0 10px #00ffff;
+        }
+
+        .qr-code-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .qr-code-item canvas {
+            border: 2px solid #00ffff;
+            border-radius: 8px;
+            background-color: white;
+            padding: 5px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #ff00ff; /* Hot pink button */
+            color: #1a1a1a;
+            font-family: 'Press Start 2P', cursive;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 5px;
+            transition: all 0.3s ease;
+            text-shadow: none; /* Remove text shadow for readability on button */
+            box-shadow: 0 0 10px #ff00ff;
+            border: 2px solid #00ffff;
+        }
+
+        .cta-button:hover {
+            background-color: #00ffff; /* Electric blue on hover */
+            color: #1a1a1a;
+            box-shadow: 0 0 15px #00ffff;
+            border: 2px solid #ff00ff;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #888;
+            text-shadow: none;
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .qr-codes {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.2em;
+            }
+            .section-title {
+                font-size: 1em;
+            }
+            .cta-button {
+                padding: 8px 15px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>~*~ PETRACORE IS IN ~*~</h1>
+        <div class="artist-info">
+            <h2 class="section-title">ARTIST INFO</h2>
+            <p class="text-xl font-bold text-white">Petra</p>
+            <p class="text-lg text-gray-300">Specialties: Illustrative, Gore, Fineline</p>
+            <p class="text-2xl font-extrabold mt-4 text-pink-400">"petracore is in ~"</p>
+        </div>
+
+        <div class="slideshow-container">
+            <!-- Images will be dynamically loaded here -->
+        </div>
+
+        <div class="qr-codes">
+            <div class="qr-code-item">
+                <h3 class="section-title">PORTFOLIO</h3>
+                <canvas id="qrPortfolio"></canvas>
+                <p class="text-sm text-gray-300">Scan to See More!</p>
+            </div>
+            <div class="qr-code-item">
+                <h3 class="section-title">INSTAGRAM</h3>
+                <canvas id="qrInstagram"></canvas>
+                <p class="text-sm text-gray-300">Scan to Follow!</p>
+            </div>
+            <div class="qr-code-item">
+                <h3 class="section-title">BOOKING</h3>
+                <canvas id="qrBooking"></canvas>
+                <p class="text-sm text-gray-300">Scan to Book Now!</p>
+            </div>
+        </div>
+
+        <div class="call-to-action">
+            <h3 class="section-title">GET IN TOUCH!</h3>
+            <a href="https://www.example.com/petra-booking" target="_blank" class="cta-button">SCAN TO BOOK!</a>
+            <a href="https://www.instagram.com/petra_tattoos" target="_blank" class="cta-button">SEE MORE ON INSTAGRAM!</a>
+            <a href="https://www.example.com/petra-portfolio" target="_blank" class="cta-button">VISIT OUR WEBSITE!</a>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 Petra Tattoos. All Rights Reserved. | <a href="#" class="text-blue-400 hover:underline">Privacy Policy</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Array of tattoo images (actual images from GitHub)
+        const tattooImages = [
+            'https://github.com/GodSpoon/petrafied-jekyll/blob/main/assets/images/portfolio/portfolio_124.jpg?raw=true',
+            'https://github.com/GodSpoon/petrafied-jekyll/blob/main/assets/images/portfolio/portfolio_122.jpg?raw=true',
+            'https://github.com/GodSpoon/petrafied-jekyll/blob/main/assets/images/portfolio/portfolio_144.jpg?raw=true'
+        ];
+
+        let currentImageIndex = 0;
+        const slideshowContainer = document.querySelector('.slideshow-container');
+
+        // Function to update the slideshow image
+        function updateSlideshow() {
+            slideshowContainer.innerHTML = ''; // Clear previous image
+            const img = document.createElement('img');
+            img.src = tattooImages[currentImageIndex];
+            img.alt = `Tattoo Showcase ${currentImageIndex + 1}`;
+            img.classList.add('slideshow-image');
+            slideshowContainer.appendChild(img);
+
+            // Add active class after a short delay to trigger animation
+            setTimeout(() => {
+                img.classList.add('active');
+            }, 50);
+
+            currentImageIndex = (currentImageIndex + 1) % tattooImages.length;
+        }
+
+        // Initialize slideshow and set interval
+        updateSlideshow();
+        setInterval(updateSlideshow, 5000); // Change image every 5 seconds
+
+        // QR Code Generation
+        function generateQRCode(elementId, text) {
+            try {
+                new QRious({
+                    element: document.getElementById(elementId),
+                    value: text,
+                    size: 150,
+                    level: 'H', // High error correction
+                    background: 'white',
+                    foreground: '#1a1a1a' // Dark color for QR code
+                });
+            } catch (error) {
+                console.error(`Error generating QR code for ${elementId}:`, error);
+                // Fallback: Display text if QR code generation fails
+                const canvas = document.getElementById(elementId);
+                const context = canvas.getContext('2d');
+                context.font = '10px Arial';
+                context.fillText('QR Error', 10, 20);
+            }
+        }
+
+        // Generate QR codes for the links
+        window.onload = function() {
+            generateQRCode('qrPortfolio', 'https://www.example.com/petra-portfolio');
+            generateQRCode('qrInstagram', 'https://www.instagram.com/petra_tattoos');
+            generateQRCode('qrBooking', 'https://www.example.com/petra-booking');
+        };
+    </script>
+</body>
+</html>
