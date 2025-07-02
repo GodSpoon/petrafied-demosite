@@ -26,7 +26,7 @@
 
         @keyframes backgroundPan {
             0% { background-position: 0% 0%; }
-            100% { background-position: 100% 100%; } /* Pans diagonally */
+            100% { background-position: 20% 20%; } /* Reduced pan distance for easier rendering */
         }
 
         .container {
@@ -35,8 +35,10 @@
             border-radius: 15px;
             box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff; /* Pink glow */
             padding: 25px;
-            max-width: 900px;
-            width: 100%;
+            /* Adjusted for better full-width 4:3 canvas fit */
+            max-width: 95%; /* Allow it to take more width */
+            width: 1200px; /* Set a larger target width for wider screens */
+            aspect-ratio: 4 / 3; /* Maintain 4:3 aspect ratio for the container itself */
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -92,12 +94,13 @@
         .slideshow-container {
             position: relative;
             width: 100%;
-            padding-top: 75%; /* 4:3 Aspect Ratio */
+            padding-top: 75%; /* 4:3 Aspect Ratio for the slideshow content */
             background-color: #000;
             border: 2px solid #ff00ff;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 0 15px #00ffff;
+            flex-grow: 1; /* Allow slideshow to take available vertical space */
         }
 
         .slideshow-image {
@@ -122,11 +125,15 @@
 
         .artist-info, .qr-codes, .call-to-action {
             background-color: #3a3a3a;
-            border: 2px solid #ff00ff;
+            border: 22px solid #ff00ff;
             border-radius: 10px;
             padding: 15px;
             text-align: center;
             box-shadow: 0 0 10px #00ffff;
+        }
+
+        .qr-codes {
+            flex-shrink: 0; /* Prevent QR codes from shrinking too much */
         }
 
         .qr-code-item {
@@ -172,6 +179,7 @@
             font-size: 0.8em;
             color: #888;
             text-shadow: none;
+            flex-shrink: 0; /* Prevent footer from shrinking */
         }
 
         /* Responsive adjustments */
@@ -186,6 +194,7 @@
         @media (max-width: 767px) {
             .container {
                 padding: 15px;
+                aspect-ratio: auto; /* Remove fixed aspect ratio on small screens */
             }
             h1 {
                 font-size: 1.5em;
